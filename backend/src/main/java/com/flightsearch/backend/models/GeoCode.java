@@ -4,6 +4,9 @@ public class GeoCode {
     private double latitude;
     private double longitude;
 
+    public GeoCode() {
+    }
+
     public GeoCode(double latitude, double longitude) {
         this.latitude = latitude;
         this.longitude = longitude;

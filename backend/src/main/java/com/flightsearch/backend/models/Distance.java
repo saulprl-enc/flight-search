@@ -4,6 +4,9 @@ public class Distance {
     private int value;
     private String unit;
 
+    public Distance() {
+    }
+
     public Distance(int value, String unit) {
         this.value = value;
         this.unit = unit;

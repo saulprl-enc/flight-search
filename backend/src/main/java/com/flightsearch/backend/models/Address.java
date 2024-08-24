@@ -8,7 +8,15 @@ public class Address {
     private String stateCode;
     private String regionCode;
 
-    public Address(String cityName, String cityCode, String countryName, String countryCode, String stateCode, String regionCode) {
+    public Address() {
+    }
+
+    public Address(String cityName,
+                   String cityCode,
+                   String countryName,
+                   String countryCode,
+                   String stateCode,
+                   String regionCode) {
         this.cityName = cityName;
         this.cityCode = cityCode;
         this.countryName = countryName;

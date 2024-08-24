@@ -3,6 +3,9 @@ package com.flightsearch.backend.models;
 public class Analytics {
     private Travelers travelers;
 
+    public Analytics() {
+    }
+
     public Analytics(Travelers travelers) {
         this.travelers = travelers;
     }
