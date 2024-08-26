@@ -47,4 +47,14 @@ public class FlightStop {
     public void setDepartureAt(String departureAt) {
         this.departureAt = departureAt;
     }
+
+    @Override
+    public String toString() {
+        return "FlightStop{" +
+                "iataCode='" + iataCode + '\'' +
+                ", duration='" + duration + '\'' +
+                ", arrivalAt='" + arrivalAt + '\'' +
+                ", departureAt='" + departureAt + '\'' +
+                '}';
+    }
 }

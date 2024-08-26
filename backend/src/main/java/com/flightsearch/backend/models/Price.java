@@ -118,4 +118,20 @@ public class Price {
     public void setRefundableTaxes(String refundableTaxes) {
         this.refundableTaxes = refundableTaxes;
     }
+
+    @Override
+    public String toString() {
+        return "Price{" +
+                "margin='" + margin + '\'' +
+                ", grandTotal='" + grandTotal + '\'' +
+                ", billingCurrency='" + billingCurrency + '\'' +
+                ", additionalServices=" + additionalServices +
+                ", currency='" + currency + '\'' +
+                ", total='" + total + '\'' +
+                ", base='" + base + '\'' +
+                ", fees=" + fees +
+                ", taxes=" + taxes +
+                ", refundableTaxes='" + refundableTaxes + '\'' +
+                '}';
+    }
 }

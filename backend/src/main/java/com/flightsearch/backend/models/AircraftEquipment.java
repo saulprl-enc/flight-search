@@ -17,4 +17,11 @@ public class AircraftEquipment {
     public void setCode(String code) {
         this.code = code;
     }
+
+    @Override
+    public String toString() {
+        return "AircraftEquipment{" +
+                "code='" + code + '\'' +
+                '}';
+    }
 }

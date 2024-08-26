@@ -47,4 +47,14 @@ public class ChargeableCheckedBags {
     public void setId(String id) {
         this.id = id;
     }
+
+    @Override
+    public String toString() {
+        return "ChargeableCheckedBags{" +
+                "quantity=" + quantity +
+                ", weight=" + weight +
+                ", weightUnit='" + weightUnit + '\'' +
+                ", id='" + id + '\'' +
+                '}';
+    }
 }

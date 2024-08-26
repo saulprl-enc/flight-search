@@ -140,4 +140,22 @@ public class Segment {
     public void setStops(List<FlightStop> stops) {
         this.stops = stops;
     }
+
+    @Override
+    public String toString() {
+        return "Segment{" +
+                "id='" + id + '\'' +
+                ", numberOfStops=" + numberOfStops +
+                ", blacklistedInEU=" + blacklistedInEU +
+                ", co2Emissions=" + co2Emissions +
+                ", departure=" + departure +
+                ", arrival=" + arrival +
+                ", carrierCode='" + carrierCode + '\'' +
+                ", number=" + number +
+                ", aircraft=" + aircraft +
+                ", operating=" + operating +
+                ", duration='" + duration + '\'' +
+                ", stops=" + stops +
+                '}';
+    }
 }

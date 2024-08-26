@@ -63,4 +63,15 @@ public class PricingOptions {
     public void setNoPenaltyFare(boolean noPenaltyFare) {
         this.noPenaltyFare = noPenaltyFare;
     }
+
+    @Override
+    public String toString() {
+        return "PricingOptions{" +
+                "fareType=" + fareType +
+                ", includedCheckedBagsOnly=" + includedCheckedBagsOnly +
+                ", refundableFare=" + refundableFare +
+                ", noRestrictionFare=" + noRestrictionFare +
+                ", noPenaltyFare=" + noPenaltyFare +
+                '}';
+    }
 }

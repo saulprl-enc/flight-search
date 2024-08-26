@@ -37,4 +37,13 @@ public class BaggageAllowance {
     public void setWeightUnit(String weightUnit) {
         this.weightUnit = weightUnit;
     }
+
+    @Override
+    public String toString() {
+        return "BaggageAllowance{" +
+                "quantity=" + quantity +
+                ", weight=" + weight +
+                ", weightUnit='" + weightUnit + '\'' +
+                '}';
+    }
 }

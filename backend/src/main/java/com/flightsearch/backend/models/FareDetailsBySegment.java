@@ -116,4 +116,20 @@ public class FareDetailsBySegment {
     public void setAdditionalServicesRequest(AdditionalServicesRequest additionalServicesRequest) {
         this.additionalServicesRequest = additionalServicesRequest;
     }
+
+    @Override
+    public String toString() {
+        return "FareDetailsBySegment{" +
+                "segmentId='" + segmentId + '\'' +
+                ", cabin=" + cabin +
+                ", fareBasis='" + fareBasis + '\'' +
+                ", brandedFare='" + brandedFare + '\'' +
+                ", bookingClass='" + bookingClass + '\'' +
+                ", isAllotment=" + isAllotment +
+                ", allotmentDetails=" + allotmentDetails +
+                ", sliceDiceIndicator=" + sliceDiceIndicator +
+                ", includedCheckedBags=" + includedCheckedBags +
+                ", additionalServicesRequest=" + additionalServicesRequest +
+                '}';
+    }
 }

@@ -37,4 +37,13 @@ public class Co2Emission {
     public void setCabin(TravelClass cabin) {
         this.cabin = cabin;
     }
+
+    @Override
+    public String toString() {
+        return "Co2Emission{" +
+                "weight=" + weight +
+                ", weightUnit='" + weightUnit + '\'' +
+                ", cabin=" + cabin +
+                '}';
+    }
 }

@@ -74,4 +74,16 @@ public class TravelerPricing {
     public void setFareDetailsBySegments(List<FareDetailsBySegment> fareDetailsBySegments) {
         this.fareDetailsBySegments = fareDetailsBySegments;
     }
+
+    @Override
+    public String toString() {
+        return "TravelerPricing{" +
+                "travelerId='" + travelerId + '\'' +
+                ", fareOption=" + fareOption +
+                ", travelerType=" + travelerType +
+                ", associatedAdultId='" + associatedAdultId + '\'' +
+                ", price=" + price +
+                ", fareDetailsBySegments=" + fareDetailsBySegments +
+                '}';
+    }
 }

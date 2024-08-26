@@ -52,4 +52,14 @@ public class AdditionalServicesRequest {
     public void setOtherServices(List<ServiceName> otherServices) {
         this.otherServices = otherServices;
     }
+
+    @Override
+    public String toString() {
+        return "AdditionalServicesRequest{" +
+                "chargeableCheckedBags=" + chargeableCheckedBags +
+                ", chargeableSeat=" + chargeableSeat +
+                ", chargeableSeatNumber='" + chargeableSeatNumber + '\'' +
+                ", otherServices=" + otherServices +
+                '}';
+    }
 }

@@ -27,4 +27,12 @@ public class ChargeableSeat {
     public void setNumber(int number) {
         this.number = number;
     }
+
+    @Override
+    public String toString() {
+        return "ChargeableSeat{" +
+                "id='" + id + '\'' +
+                ", number=" + number +
+                '}';
+    }
 }

@@ -27,4 +27,12 @@ public class CollectionMeta {
     public void setLinks(CollectionLinks links) {
         this.links = links;
     }
+
+    @Override
+    public String toString() {
+        return "CollectionMeta{" +
+                "count=" + count +
+                ", links=" + links +
+                '}';
+    }
 }

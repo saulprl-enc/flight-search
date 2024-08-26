@@ -27,4 +27,12 @@ public class Tax {
     public void setCode(String code) {
         this.code = code;
     }
+
+    @Override
+    public String toString() {
+        return "Tax{" +
+                "amount='" + amount + '\'' +
+                ", code='" + code + '\'' +
+                '}';
+    }
 }

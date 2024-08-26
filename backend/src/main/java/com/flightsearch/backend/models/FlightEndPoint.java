@@ -37,4 +37,13 @@ public class FlightEndPoint {
     public void setAt(String at) {
         this.at = at;
     }
+
+    @Override
+    public String toString() {
+        return "FlightEndPoint{" +
+                "iataCode='" + iataCode + '\'' +
+                ", terminal='" + terminal + '\'' +
+                ", at='" + at + '\'' +
+                '}';
+    }
 }

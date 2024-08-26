@@ -72,4 +72,16 @@ public class CollectionLinks {
     public void setUp(String up) {
         this.up = up;
     }
+
+    @Override
+    public String toString() {
+        return "CollectionLinks{" +
+                "self='" + self + '\'' +
+                ", next='" + next + '\'' +
+                ", previous='" + previous + '\'' +
+                ", last='" + last + '\'' +
+                ", first='" + first + '\'' +
+                ", up='" + up + '\'' +
+                '}';
+    }
 }

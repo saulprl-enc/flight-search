@@ -27,4 +27,12 @@ public class AllotmentDetails {
     public void setTourReference(String tourReference) {
         this.tourReference = tourReference;
     }
+
+    @Override
+    public String toString() {
+        return "AllotmentDetails{" +
+                "tourName='" + tourName + '\'' +
+                ", tourReference='" + tourReference + '\'' +
+                '}';
+    }
 }

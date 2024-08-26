@@ -17,4 +17,11 @@ public class OperatingFlight {
     public void setCarrierCode(String carrierCode) {
         this.carrierCode = carrierCode;
     }
+
+    @Override
+    public String toString() {
+        return "OperatingFlight{" +
+                "carrierCode='" + carrierCode + '\'' +
+                '}';
+    }
 }

@@ -184,4 +184,26 @@ public class FlightOffer {
     public void setTravelerPricings(List<TravelerPricing> travelerPricings) {
         this.travelerPricings = travelerPricings;
     }
+
+    @Override
+    public String toString() {
+        return "FlightOffer{" +
+                "type='" + type + '\'' +
+                ", id='" + id + '\'' +
+                ", source=" + source +
+                ", instantTicketingRequired=" + instantTicketingRequired +
+                ", disablePricing=" + disablePricing +
+                ", nonHomogeneous=" + nonHomogeneous +
+                ", oneWay=" + oneWay +
+                ", paymentCardRequired=" + paymentCardRequired +
+                ", lastTicketingDate='" + lastTicketingDate + '\'' +
+                ", lastTicketingDateTime='" + lastTicketingDateTime + '\'' +
+                ", numberOfBookableSeats=" + numberOfBookableSeats +
+                ", itineraries=" + itineraries +
+                ", price=" + price +
+                ", pricingOptions=" + pricingOptions +
+                ", validatingAirlineCodes=" + validatingAirlineCodes +
+                ", travelerPricings=" + travelerPricings +
+                '}';
+    }
 }

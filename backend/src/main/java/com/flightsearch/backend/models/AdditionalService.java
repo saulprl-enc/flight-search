@@ -27,4 +27,12 @@ public class AdditionalService {
     public void setType(AdditionalServiceType type) {
         this.type = type;
     }
+
+    @Override
+    public String toString() {
+        return "AdditionalService{" +
+                "amount='" + amount + '\'' +
+                ", type=" + type +
+                '}';
+    }
 }

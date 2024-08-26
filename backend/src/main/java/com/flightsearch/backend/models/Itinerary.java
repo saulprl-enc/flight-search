@@ -29,4 +29,12 @@ public class Itinerary {
     public void setSegments(List<Segment> segments) {
         this.segments = segments;
     }
+
+    @Override
+    public String toString() {
+        return "Itinerary{" +
+                "duration='" + duration + '\'' +
+                ", segments=" + segments +
+                '}';
+    }
 }

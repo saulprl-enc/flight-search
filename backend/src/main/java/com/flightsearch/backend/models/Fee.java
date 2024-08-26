@@ -27,4 +27,12 @@ public class Fee {
     public void setType(FeeType type) {
         this.type = type;
     }
+
+    @Override
+    public String toString() {
+        return "Fee{" +
+                "amount='" + amount + '\'' +
+                ", type=" + type +
+                '}';
+    }
 }
