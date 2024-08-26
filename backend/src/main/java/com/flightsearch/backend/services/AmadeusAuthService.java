@@ -1,5 +1,6 @@
 package com.flightsearch.backend.services;
 
+import com.flightsearch.backend.models.AmadeusAuthResponse;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
@@ -41,13 +42,15 @@ public class AmadeusAuthService implements IAmadeusAuthService {
         body.add("client_secret", clientSecret);
 
         HttpEntity<MultiValueMap<String, String>> request = new HttpEntity<>(body, headers);
-        ResponseEntity<Map> response = restTemplate.postForEntity(authUrl, request, Map.class);
+        ResponseEntity<AmadeusAuthResponse> response = restTemplate
+                .postForEntity(authUrl, request, AmadeusAuthResponse.class);
 
         if (response.getStatusCode().is2xxSuccessful()) {
-            Map<String, Object> responseBody = response.getBody();
-            this.accessToken = (String) responseBody.get("access_token");
-            int expiresIn = (Integer) responseBody.get("expires_in");
-            this.tokenExpirationTime = System.currentTimeMillis() + (expiresIn * 1000);
+            AmadeusAuthResponse responseBody = response.getBody();
+
+            this.accessToken = responseBody.getAccessToken();
+            int expiresIn = responseBody.getExpiresIn();
+            this.tokenExpirationTime = System.currentTimeMillis() + (expiresIn * 1000L);
         } else {
             throw new RuntimeException("Failed to authenticate with Amadeus API");
         }

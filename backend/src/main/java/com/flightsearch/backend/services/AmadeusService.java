@@ -1,10 +1,12 @@
 package com.flightsearch.backend.services;
 
+import com.flightsearch.backend.models.FlightOffersResponse;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -43,13 +45,20 @@ public class AmadeusService implements IAmadeusService {
                 .queryParam("nonStop", nonStop)
                 .build().toUriString();
 
-        RestTemplate restTemplate = new RestTemplate();
-        HttpHeaders headers = getBasicHeaders();
+        System.out.println(url);
 
-        HttpEntity<String> entity = new HttpEntity<>(headers);
-        ResponseEntity<String> response = restTemplate.exchange(url, HttpMethod.GET, entity, String.class);
+        try {
+            RestTemplate restTemplate = new RestTemplate();
+            HttpHeaders headers = getBasicHeaders();
 
-        System.out.println(response.getBody());
+            HttpEntity<String> entity = new HttpEntity<>(headers);
+            ResponseEntity<FlightOffersResponse> response = restTemplate
+                    .exchange(url, HttpMethod.GET, entity, FlightOffersResponse.class);
+
+            System.out.println("Response: " + response.getBody());
+        } catch (RestClientException rcEx) {
+            System.out.println("Exception: " + rcEx.getMessage());
+        }
 
         return "";
     }
