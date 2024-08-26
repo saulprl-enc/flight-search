@@ -45,8 +45,6 @@ public class AmadeusService implements IAmadeusService {
                 .queryParam("nonStop", nonStop)
                 .build().toUriString();
 
-        System.out.println(url);
-
         try {
             RestTemplate restTemplate = new RestTemplate();
             HttpHeaders headers = getBasicHeaders();

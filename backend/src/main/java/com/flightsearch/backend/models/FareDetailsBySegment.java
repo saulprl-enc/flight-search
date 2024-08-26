@@ -1,10 +1,14 @@
 package com.flightsearch.backend.models;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class FareDetailsBySegment {
     private String segmentId;
     private TravelClass cabin;
     private String fareBasis;
     private String brandedFare;
+
+    @JsonProperty("class")
     private String bookingClass;
     private boolean isAllotment;
     private AllotmentDetails allotmentDetails;
