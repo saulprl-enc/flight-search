@@ -31,13 +31,13 @@ public class AmadeusService implements IAmadeusService {
     }
 
     @Override
-    public String getFlightOffers(String origin,
-                                  String destination,
-                                  LocalDate departureDate,
-                                  LocalDate returnDate,
-                                  Integer adults,
-                                  String currencyCode,
-                                  Boolean nonStop) {
+    public AmadeusResponse<FlightOffer> getFlightOffers(String origin,
+                                                        String destination,
+                                                        LocalDate departureDate,
+                                                        LocalDate returnDate,
+                                                        Integer adults,
+                                                        String currencyCode,
+                                                        Boolean nonStop) {
         String url = UriComponentsBuilder
                 .fromUriString(baseUrl)
                 .path(flightOffersEndpoint)
@@ -58,21 +58,23 @@ public class AmadeusService implements IAmadeusService {
             ResponseEntity<AmadeusResponse> response = restTemplate
                     .exchange(url, HttpMethod.GET, entity, AmadeusResponse.class);
 
-            System.out.println("Response: " + response.getBody());
+            return response.getBody();
         } catch (RestClientException rcEx) {
             try {
                 ObjectMapper mapper = new ObjectMapper();
                 mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
-                AmadeusResponse<FlightOffer> res = mapper.readValue(new File("./src/main/java/com/flightsearch/backend/flight-offers.json"), AmadeusResponse.class);
+                AmadeusResponse<FlightOffer> res = mapper.readValue(
+                        new File("./src/main/java/com/flightsearch/backend/flight-offers.json"),
+                        AmadeusResponse.class);
 
-                System.out.println(res);
+                return res;
             } catch (IOException ioEx) {
                 System.out.println(ioEx);
             }
         }
 
-        return "";
+        return null;
     }
 
     @Override
