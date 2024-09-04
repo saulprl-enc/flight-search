@@ -1,5 +1,13 @@
 package com.flightsearch.backend.services;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.flightsearch.backend.dto.FlightEndPointDto;
+import com.flightsearch.backend.dto.FlightOfferDto;
+import com.flightsearch.backend.dto.ItineraryDto;
+import com.flightsearch.backend.dto.SegmentDto;
+import com.flightsearch.backend.models.FlightOffer;
+import com.flightsearch.backend.models.FlightOfferSource;
 import com.flightsearch.backend.models.FlightOffersResponse;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -10,7 +18,12 @@ import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Paths;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 public class AmadeusService implements IAmadeusService {
@@ -55,7 +68,16 @@ public class AmadeusService implements IAmadeusService {
 
             System.out.println("Response: " + response.getBody());
         } catch (RestClientException rcEx) {
-            System.out.println("Exception: " + rcEx.getMessage());
+            try {
+                ObjectMapper mapper = new ObjectMapper();
+                mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+
+                FlightOffersResponse res = mapper.readValue(new File("./src/main/java/com/flightsearch/backend/flight-offers.json"), FlightOffersResponse.class);
+
+                System.out.println(res);
+            } catch (IOException ioEx) {
+                System.out.println(ioEx);
+            }
         }
 
         return "";
