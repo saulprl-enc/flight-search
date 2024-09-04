@@ -2,14 +2,14 @@ package com.flightsearch.backend.models;
 
 import java.util.List;
 
-public class FlightOffersResponse {
+public class AmadeusResponse<T> {
     private CollectionMeta meta;
-    private List<FlightOffer> data;
+    private List<T> data;
 
-    public FlightOffersResponse() {
+    public AmadeusResponse() {
     }
 
-    public FlightOffersResponse(CollectionMeta meta, List<FlightOffer> data) {
+    public AmadeusResponse(CollectionMeta meta, List<T> data) {
         this.meta = meta;
         this.data = data;
     }
@@ -22,11 +22,11 @@ public class FlightOffersResponse {
         this.meta = meta;
     }
 
-    public List<FlightOffer> getData() {
+    public List<T> getData() {
         return data;
     }
 
-    public void setData(List<FlightOffer> data) {
+    public void setData(List<T> data) {
         this.data = data;
     }
 
