@@ -2,39 +2,15 @@ package com.flightsearch.backend.models;
 
 import java.util.List;
 
-public class AmadeusResponse<T> {
-    private CollectionMeta meta;
-    private List<T> data;
+public interface AmadeusResponse<T> {
+    public CollectionMeta getMeta();
 
-    public AmadeusResponse() {
-    }
+    public void setMeta(CollectionMeta meta);
 
-    public AmadeusResponse(CollectionMeta meta, List<T> data) {
-        this.meta = meta;
-        this.data = data;
-    }
+    public List<T> getData();
 
-    public CollectionMeta getMeta() {
-        return meta;
-    }
-
-    public void setMeta(CollectionMeta meta) {
-        this.meta = meta;
-    }
-
-    public List<T> getData() {
-        return data;
-    }
-
-    public void setData(List<T> data) {
-        this.data = data;
-    }
+    public void setData(List<T> data);
 
     @Override
-    public String toString() {
-        return "FlightOffersResponse{" +
-                "meta=" + meta +
-                ", data=" + data +
-                '}';
-    }
+    public String toString();
 }

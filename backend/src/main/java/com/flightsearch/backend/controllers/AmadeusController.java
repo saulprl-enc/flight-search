@@ -1,5 +1,7 @@
 package com.flightsearch.backend.controllers;
 
+import com.flightsearch.backend.dto.FlightOfferDto;
+import com.flightsearch.backend.dto.FlightOffersResponseDto;
 import com.flightsearch.backend.models.AmadeusResponse;
 import com.flightsearch.backend.models.FlightOffer;
 import com.flightsearch.backend.services.IAmadeusService;
@@ -20,7 +22,7 @@ public class AmadeusController {
     }
 
     @GetMapping("flights")
-    public AmadeusResponse<FlightOffer> getFlightOffers() {
+    public FlightOffersResponseDto getFlightOffers() {
         return amadeusService.getFlightOffers("HMO",
                 "GDL",
                 LocalDate.of(2024, Month.SEPTEMBER, 21),

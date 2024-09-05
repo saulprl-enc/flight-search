@@ -2,8 +2,12 @@ package com.flightsearch.backend.services;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.flightsearch.backend.dto.FlightOfferDto;
+import com.flightsearch.backend.dto.FlightOffersResponseDto;
+import com.flightsearch.backend.mapper.FlightOfferMapper;
 import com.flightsearch.backend.models.AmadeusResponse;
 import com.flightsearch.backend.models.FlightOffer;
+import com.flightsearch.backend.models.FlightOffersResponse;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -16,9 +20,11 @@ import org.springframework.web.util.UriComponentsBuilder;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.List;
 
 @Service
 public class AmadeusService implements IAmadeusService {
+    private final FlightOfferMapper flightOfferMapper;
     private final IAmadeusAuthService amadeusAuthService;
 
     private String baseUrl = "https://test.api.amadeus.com";
@@ -26,18 +32,19 @@ public class AmadeusService implements IAmadeusService {
     private String airlinesEndpoint = "/v1/reference-data/airlines";
     private String airportsEndpoint = "/v1/reference-data/locations";
 
-    public AmadeusService(IAmadeusAuthService amadeusAuthService) {
+    public AmadeusService(IAmadeusAuthService amadeusAuthService, FlightOfferMapper flightOfferMapper) {
         this.amadeusAuthService = amadeusAuthService;
+        this.flightOfferMapper = flightOfferMapper;
     }
 
     @Override
-    public AmadeusResponse<FlightOffer> getFlightOffers(String origin,
-                                                        String destination,
-                                                        LocalDate departureDate,
-                                                        LocalDate returnDate,
-                                                        Integer adults,
-                                                        String currencyCode,
-                                                        Boolean nonStop) {
+    public FlightOffersResponseDto getFlightOffers(String origin,
+                                                   String destination,
+                                                   LocalDate departureDate,
+                                                   LocalDate returnDate,
+                                                   Integer adults,
+                                                   String currencyCode,
+                                                   Boolean nonStop) {
         String url = UriComponentsBuilder
                 .fromUriString(baseUrl)
                 .path(flightOffersEndpoint)
@@ -55,22 +62,27 @@ public class AmadeusService implements IAmadeusService {
             HttpHeaders headers = getBasicHeaders();
 
             HttpEntity<String> entity = new HttpEntity<>(headers);
-            ResponseEntity<AmadeusResponse> response = restTemplate
-                    .exchange(url, HttpMethod.GET, entity, AmadeusResponse.class);
+            ResponseEntity<FlightOffersResponse> response = restTemplate
+                    .exchange(url, HttpMethod.GET, entity, FlightOffersResponse.class);
 
-            return response.getBody();
+            FlightOffersResponse responseBody = response.getBody();
+            FlightOffersResponseDto dtoResponse = mapFlightOffersToDto(responseBody);
+
+            return dtoResponse;
         } catch (RestClientException rcEx) {
-            try {
-                ObjectMapper mapper = new ObjectMapper();
-                mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
+            if (rcEx.getMessage().startsWith("500")) {
+                try {
+                    ObjectMapper mapper = new ObjectMapper();
+                    mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
 
-                AmadeusResponse<FlightOffer> res = mapper.readValue(
-                        new File("./src/main/java/com/flightsearch/backend/flight-offers.json"),
-                        AmadeusResponse.class);
+                    FlightOffersResponse res = mapper.readValue(
+                            new File("./src/main/java/com/flightsearch/backend/flight-offers.json"),
+                            FlightOffersResponse.class);
 
-                return res;
-            } catch (IOException ioEx) {
-                System.out.println(ioEx);
+                    return mapFlightOffersToDto(res);
+                } catch (IOException ioEx) {
+                    System.out.println(ioEx);
+                }
             }
         }
 
@@ -92,5 +104,11 @@ public class AmadeusService implements IAmadeusService {
         headers.set("Authorization", "Bearer " + amadeusAuthService.getAccessToken());
 
         return headers;
+    }
+
+    private FlightOffersResponseDto mapFlightOffersToDto(FlightOffersResponse flightOffers) {
+        List<FlightOfferDto> flightOfferDtoList = flightOfferMapper.convertToDtoList(flightOffers.getData());
+
+        return new FlightOffersResponseDto(flightOfferDtoList);
     }
 }

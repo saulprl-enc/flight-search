@@ -5,6 +5,7 @@ import com.flightsearch.backend.models.FlightOffer;
 import org.mapstruct.Mapper;
 
 import java.text.ParseException;
+import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface FlightOfferMapper {
@@ -12,4 +13,6 @@ public interface FlightOfferMapper {
 
     FlightOffer convertToEntity(FlightOfferDto source)
             throws ParseException;
+
+    List<FlightOfferDto> convertToDtoList(List<FlightOffer> source);
 }
