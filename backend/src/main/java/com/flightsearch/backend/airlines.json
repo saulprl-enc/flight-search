@@ -1,0 +1,43 @@
+{
+  "meta": {
+    "count": 4,
+    "links": {
+      "self": "https://test.api.amadeus.com/v1/reference-data/airlines?airlineCodes=Y4,MX,ZX,HH",
+      "next": null,
+      "previous": null,
+      "last": null,
+      "first": null,
+      "up": null
+    }
+  },
+  "data": [
+    {
+      "type": "airline",
+      "iataCode": "HH",
+      "icaoCode": "QNT",
+      "businessName": "QANOT SHARQ",
+      "commonName": "QANOT SHARQ"
+    },
+    {
+      "type": "airline",
+      "iataCode": "MX",
+      "icaoCode": null,
+      "businessName": "BREEZE AIRWAYS",
+      "commonName": "MEXICANA"
+    },
+    {
+      "type": "airline",
+      "iataCode": "Y4",
+      "icaoCode": "VOI",
+      "businessName": "VOLARIS",
+      "commonName": "VOLARIS"
+    },
+    {
+      "type": "airline",
+      "iataCode": "ZX",
+      "icaoCode": "GGN",
+      "businessName": "2746904 ONTARIO INC",
+      "commonName": "2746904 ONTARIO INC"
+    }
+  ]
+}

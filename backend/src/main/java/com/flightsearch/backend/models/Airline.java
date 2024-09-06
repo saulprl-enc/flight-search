@@ -57,4 +57,15 @@ public class Airline {
     public void setCommonName(String commonName) {
         this.commonName = commonName;
     }
+
+    @Override
+    public String toString() {
+        return "Airline{" +
+                "type='" + type + '\'' +
+                ", iataCode='" + iataCode + '\'' +
+                ", icaoCode='" + icaoCode + '\'' +
+                ", businessName='" + businessName + '\'' +
+                ", commonName='" + commonName + '\'' +
+                '}';
+    }
 }

@@ -2,9 +2,13 @@ package com.flightsearch.backend.services;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.flightsearch.backend.dto.AirlineDto;
+import com.flightsearch.backend.dto.AirlinesResponseDto;
 import com.flightsearch.backend.dto.FlightOfferDto;
 import com.flightsearch.backend.dto.FlightOffersResponseDto;
+import com.flightsearch.backend.mapper.AirlineMapper;
 import com.flightsearch.backend.mapper.FlightOfferMapper;
+import com.flightsearch.backend.models.AirlinesResponse;
 import com.flightsearch.backend.models.AmadeusResponse;
 import com.flightsearch.backend.models.FlightOffer;
 import com.flightsearch.backend.models.FlightOffersResponse;
@@ -25,6 +29,7 @@ import java.util.List;
 @Service
 public class AmadeusService implements IAmadeusService {
     private final FlightOfferMapper flightOfferMapper;
+    private final AirlineMapper airlineMapper;
     private final IAmadeusAuthService amadeusAuthService;
 
     private String baseUrl = "https://test.api.amadeus.com";
@@ -32,9 +37,12 @@ public class AmadeusService implements IAmadeusService {
     private String airlinesEndpoint = "/v1/reference-data/airlines";
     private String airportsEndpoint = "/v1/reference-data/locations";
 
-    public AmadeusService(IAmadeusAuthService amadeusAuthService, FlightOfferMapper flightOfferMapper) {
+    public AmadeusService(IAmadeusAuthService amadeusAuthService,
+                          FlightOfferMapper flightOfferMapper,
+                          AirlineMapper airlineMapper) {
         this.amadeusAuthService = amadeusAuthService;
         this.flightOfferMapper = flightOfferMapper;
+        this.airlineMapper = airlineMapper;
     }
 
     @Override
@@ -90,8 +98,31 @@ public class AmadeusService implements IAmadeusService {
     }
 
     @Override
-    public String getAirlineData(String airlineCode) {
-        return "";
+    public AirlinesResponseDto getAirlineData(String airlineCode) {
+        String url = UriComponentsBuilder
+                .fromUriString(baseUrl)
+                .path(airlinesEndpoint)
+                .queryParam("airlineCodes", airlineCode)
+                .build().toUriString();
+
+        try {
+            RestTemplate restTemplate = new RestTemplate();
+            HttpHeaders headers = getBasicHeaders();
+
+            HttpEntity<String> entity = new HttpEntity<>(headers);
+            ResponseEntity<AirlinesResponse> response = restTemplate
+                    .exchange(url, HttpMethod.GET, entity, AirlinesResponse.class);
+
+            AirlinesResponse responseBody = response.getBody();
+
+            AirlinesResponseDto dtoResponse = mapAirlinesToDto(responseBody);
+
+            return dtoResponse;
+        } catch (RestClientException rcEx) {
+
+        }
+
+        return null;
     }
 
     @Override
@@ -110,5 +141,11 @@ public class AmadeusService implements IAmadeusService {
         List<FlightOfferDto> flightOfferDtoList = flightOfferMapper.convertToDtoList(flightOffers.getData());
 
         return new FlightOffersResponseDto(flightOfferDtoList);
+    }
+
+    private AirlinesResponseDto mapAirlinesToDto(AirlinesResponse airlines) {
+        List<AirlineDto> airlinesDtoList = airlineMapper.convertToDtoList(airlines.getData());
+
+        return new AirlinesResponseDto(airlinesDtoList);
     }
 }

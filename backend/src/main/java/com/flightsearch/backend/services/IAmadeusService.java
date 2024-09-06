@@ -1,5 +1,6 @@
 package com.flightsearch.backend.services;
 
+import com.flightsearch.backend.dto.AirlinesResponseDto;
 import com.flightsearch.backend.dto.FlightOfferDto;
 import com.flightsearch.backend.dto.FlightOffersResponseDto;
 import com.flightsearch.backend.models.AmadeusResponse;
@@ -15,7 +16,7 @@ public interface IAmadeusService {
                                             String currencyCode,
                                             Boolean nonStop);
 
-    String getAirlineData(String airlineCode);
+    AirlinesResponseDto getAirlineData(String airlineCode);
 
     String getAirports(String keyword);
 }
