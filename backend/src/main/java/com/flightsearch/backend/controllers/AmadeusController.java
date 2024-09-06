@@ -54,4 +54,9 @@ public class AmadeusController {
     public AirlinesResponseDto getAirlineByCode(@RequestParam() String airlineCode) {
         return amadeusService.getAirlineData(airlineCode);
     }
+
+    @GetMapping("airports")
+    public void getAirports() {
+
+    }
 }

@@ -28,6 +28,7 @@ import java.util.List;
 
 @Service
 public class AmadeusService implements IAmadeusService {
+    private final ObjectMapper mapper;
     private final FlightOfferMapper flightOfferMapper;
     private final AirlineMapper airlineMapper;
     private final IAmadeusAuthService amadeusAuthService;
@@ -43,6 +44,8 @@ public class AmadeusService implements IAmadeusService {
         this.amadeusAuthService = amadeusAuthService;
         this.flightOfferMapper = flightOfferMapper;
         this.airlineMapper = airlineMapper;
+        this.mapper = new ObjectMapper();
+        this.mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
     }
 
     @Override
@@ -119,7 +122,18 @@ public class AmadeusService implements IAmadeusService {
 
             return dtoResponse;
         } catch (RestClientException rcEx) {
+            if (rcEx.getMessage().startsWith("500")) {
+                try {
+                    AirlinesResponse response = mapper.readValue(
+                            new File("./src/main/java/com/flightsearch/backend/airlines.json").getAbsoluteFile(),
+                            AirlinesResponse.class
+                    );
 
+                    return mapAirlinesToDto(response);
+                } catch (IOException ioEx) {
+                    System.out.println(ioEx);
+                }
+            }
         }
 
         return null;
