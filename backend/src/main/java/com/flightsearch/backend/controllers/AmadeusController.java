@@ -1,6 +1,7 @@
 package com.flightsearch.backend.controllers;
 
 import com.flightsearch.backend.dto.AirlinesResponseDto;
+import com.flightsearch.backend.dto.AirportsResponseDto;
 import com.flightsearch.backend.dto.FlightOfferDto;
 import com.flightsearch.backend.dto.FlightOffersResponseDto;
 import com.flightsearch.backend.models.AmadeusResponse;
@@ -56,7 +57,17 @@ public class AmadeusController {
     }
 
     @GetMapping("airports")
-    public void getAirports() {
+    public AirportsResponseDto getAirports(@RequestParam() String keyword,
+                                           @RequestParam(required = false) Integer limit,
+                                           @RequestParam(required = false) Integer offset) {
+        if (limit == null) {
+            limit = 10;
+        }
 
+        if (offset == null) {
+            offset = 0;
+        }
+
+        return amadeusService.getAirports(keyword, limit, offset);
     }
 }

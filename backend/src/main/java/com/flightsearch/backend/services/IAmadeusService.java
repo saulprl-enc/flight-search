@@ -1,9 +1,8 @@
 package com.flightsearch.backend.services;
 
 import com.flightsearch.backend.dto.AirlinesResponseDto;
-import com.flightsearch.backend.dto.FlightOfferDto;
+import com.flightsearch.backend.dto.AirportsResponseDto;
 import com.flightsearch.backend.dto.FlightOffersResponseDto;
-import com.flightsearch.backend.models.AmadeusResponse;
 
 import java.time.LocalDate;
 
@@ -18,5 +17,5 @@ public interface IAmadeusService {
 
     AirlinesResponseDto getAirlineData(String airlineCode);
 
-    String getAirports(String keyword);
+    AirportsResponseDto getAirports(String keyword, int limit, int offset);
 }

@@ -1,0 +1,327 @@
+{
+  "meta": {
+    "count": 137,
+    "links": {
+      "self": "https://test.api.amadeus.com/v1/reference-data/locations?subType=AIRPORT&keyword=me&page%5Boffset%5D=0&page%5Blimit%5D=10",
+      "next": "https://test.api.amadeus.com/v1/reference-data/locations?subType=AIRPORT&keyword=me&page%5Boffset%5D=10&page%5Blimit%5D=10",
+      "last": "https://test.api.amadeus.com/v1/reference-data/locations?subType=AIRPORT&keyword=me&page%5Boffset%5D=127&page%5Blimit%5D=10"
+    }
+  },
+  "data": [
+    {
+      "type": "location",
+      "subType": "AIRPORT",
+      "name": "BENITO JUAREZ INTL",
+      "detailedName": "MEXICO CITY/MX:BENITO JUAREZ I",
+      "id": "AMEX",
+      "self": {
+        "href": "https://test.api.amadeus.com/v1/reference-data/locations/AMEX",
+        "methods": [
+          "GET"
+        ]
+      },
+      "timeZoneOffset": "-06:00",
+      "iataCode": "MEX",
+      "geoCode": {
+        "latitude": 19.43639,
+        "longitude": -99.07222
+      },
+      "address": {
+        "cityName": "MEXICO CITY",
+        "cityCode": "MEX",
+        "countryName": "MEXICO",
+        "countryCode": "MX",
+        "regionCode": "NAMER"
+      },
+      "analytics": {
+        "travelers": {
+          "score": 35
+        }
+      }
+    },
+    {
+      "type": "location",
+      "subType": "AIRPORT",
+      "name": "METROPOLITAN WAYNE CO",
+      "detailedName": "DETROIT/MI/US:METROPOLITAN WAY",
+      "id": "ADTW",
+      "self": {
+        "href": "https://test.api.amadeus.com/v1/reference-data/locations/ADTW",
+        "methods": [
+          "GET"
+        ]
+      },
+      "timeZoneOffset": "-04:00",
+      "iataCode": "DTW",
+      "geoCode": {
+        "latitude": 42.21251,
+        "longitude": -83.35333
+      },
+      "address": {
+        "cityName": "DETROIT",
+        "cityCode": "DTT",
+        "countryName": "UNITED STATES OF AMERICA",
+        "countryCode": "US",
+        "stateCode": "MI",
+        "regionCode": "NAMER"
+      },
+      "analytics": {
+        "travelers": {
+          "score": 21
+        }
+      }
+    },
+    {
+      "type": "location",
+      "subType": "AIRPORT",
+      "name": "MEILAN INTL",
+      "detailedName": "HAIKOU/CN:MEILAN INTL",
+      "id": "AHAK",
+      "self": {
+        "href": "https://test.api.amadeus.com/v1/reference-data/locations/AHAK",
+        "methods": [
+          "GET"
+        ]
+      },
+      "timeZoneOffset": "+08:00",
+      "iataCode": "HAK",
+      "geoCode": {
+        "latitude": 19.93473,
+        "longitude": 110.45890
+      },
+      "address": {
+        "cityName": "HAIKOU",
+        "cityCode": "HAK",
+        "countryName": "CHINA",
+        "countryCode": "CN",
+        "regionCode": "ASIA"
+      },
+      "analytics": {
+        "travelers": {
+          "score": 9
+        }
+      }
+    },
+    {
+      "type": "location",
+      "subType": "AIRPORT",
+      "name": "ADNAN MENDERES",
+      "detailedName": "IZMIR/TR:ADNAN MENDERES",
+      "id": "AADB",
+      "self": {
+        "href": "https://test.api.amadeus.com/v1/reference-data/locations/AADB",
+        "methods": [
+          "GET"
+        ]
+      },
+      "timeZoneOffset": "+03:00",
+      "iataCode": "ADB",
+      "geoCode": {
+        "latitude": 38.29250,
+        "longitude": 27.15695
+      },
+      "address": {
+        "cityName": "IZMIR",
+        "cityCode": "IZM",
+        "countryName": "TURKIYE",
+        "countryCode": "TR",
+        "regionCode": "EURAS"
+      },
+      "analytics": {
+        "travelers": {
+          "score": 7
+        }
+      }
+    },
+    {
+      "type": "location",
+      "subType": "AIRPORT",
+      "name": "RALPH WIEN MEMORIAL",
+      "detailedName": "KOTZEBUE/AK/US:RALPH WIEN MEMO",
+      "id": "AOTZ",
+      "self": {
+        "href": "https://test.api.amadeus.com/v1/reference-data/locations/AOTZ",
+        "methods": [
+          "GET"
+        ]
+      },
+      "timeZoneOffset": "-08:00",
+      "iataCode": "OTZ",
+      "geoCode": {
+        "latitude": 66.88473,
+        "longitude": -162.59860
+      },
+      "address": {
+        "cityName": "KOTZEBUE",
+        "cityCode": "OTZ",
+        "countryName": "UNITED STATES OF AMERICA",
+        "countryCode": "US",
+        "stateCode": "AK",
+        "regionCode": "NAMER"
+      },
+      "analytics": {
+        "travelers": {
+          "score": 6
+        }
+      }
+    },
+    {
+      "type": "location",
+      "subType": "AIRPORT",
+      "name": "MERIGNAC",
+      "detailedName": "BORDEAUX/FR:MERIGNAC",
+      "id": "ABOD",
+      "self": {
+        "href": "https://test.api.amadeus.com/v1/reference-data/locations/ABOD",
+        "methods": [
+          "GET"
+        ]
+      },
+      "timeZoneOffset": "+02:00",
+      "iataCode": "BOD",
+      "geoCode": {
+        "latitude": 44.82834,
+        "longitude": -0.71555
+      },
+      "address": {
+        "cityName": "BORDEAUX",
+        "cityCode": "BOD",
+        "countryName": "FRANCE",
+        "countryCode": "FR",
+        "regionCode": "EUROP"
+      },
+      "analytics": {
+        "travelers": {
+          "score": 4
+        }
+      }
+    },
+    {
+      "type": "location",
+      "subType": "AIRPORT",
+      "name": "W.POST W.ROGERS MEM",
+      "detailedName": "BARROW/AK/US:W.POST W.ROGERS M",
+      "id": "ABRW",
+      "self": {
+        "href": "https://test.api.amadeus.com/v1/reference-data/locations/ABRW",
+        "methods": [
+          "GET"
+        ]
+      },
+      "timeZoneOffset": "-08:00",
+      "iataCode": "BRW",
+      "geoCode": {
+        "latitude": 71.28528,
+        "longitude": -156.76579
+      },
+      "address": {
+        "cityName": "BARROW",
+        "cityCode": "BRW",
+        "countryName": "UNITED STATES OF AMERICA",
+        "countryCode": "US",
+        "stateCode": "AK",
+        "regionCode": "NAMER"
+      },
+      "analytics": {
+        "travelers": {
+          "score": 3
+        }
+      }
+    },
+    {
+      "type": "location",
+      "subType": "AIRPORT",
+      "name": "MEMPHIS INTL",
+      "detailedName": "MEMPHIS/TN/US:MEMPHIS INTL",
+      "id": "AMEM",
+      "self": {
+        "href": "https://test.api.amadeus.com/v1/reference-data/locations/AMEM",
+        "methods": [
+          "GET"
+        ]
+      },
+      "timeZoneOffset": "-05:00",
+      "iataCode": "MEM",
+      "geoCode": {
+        "latitude": 35.04223,
+        "longitude": -89.98166
+      },
+      "address": {
+        "cityName": "MEMPHIS",
+        "cityCode": "MEM",
+        "countryName": "UNITED STATES OF AMERICA",
+        "countryCode": "US",
+        "stateCode": "TN",
+        "regionCode": "NAMER"
+      },
+      "analytics": {
+        "travelers": {
+          "score": 3
+        }
+      }
+    },
+    {
+      "type": "location",
+      "subType": "AIRPORT",
+      "name": "MENORCA",
+      "detailedName": "MENORCA/ES",
+      "id": "AMAH",
+      "self": {
+        "href": "https://test.api.amadeus.com/v1/reference-data/locations/AMAH",
+        "methods": [
+          "GET"
+        ]
+      },
+      "timeZoneOffset": "+02:00",
+      "iataCode": "MAH",
+      "geoCode": {
+        "latitude": 39.86251,
+        "longitude": 4.21862
+      },
+      "address": {
+        "cityName": "MENORCA",
+        "cityCode": "MAH",
+        "countryName": "SPAIN",
+        "countryCode": "ES",
+        "regionCode": "EUROP"
+      },
+      "analytics": {
+        "travelers": {
+          "score": 3
+        }
+      }
+    },
+    {
+      "type": "location",
+      "subType": "AIRPORT",
+      "name": "MESA GATEWAY",
+      "detailedName": "PHOENIX/AZ/US:MESA GATEWAY",
+      "id": "AAZA",
+      "self": {
+        "href": "https://test.api.amadeus.com/v1/reference-data/locations/AAZA",
+        "methods": [
+          "GET"
+        ]
+      },
+      "timeZoneOffset": "-07:00",
+      "iataCode": "AZA",
+      "geoCode": {
+        "latitude": 33.30667,
+        "longitude": -111.66810
+      },
+      "address": {
+        "cityName": "PHOENIX",
+        "cityCode": "PHX",
+        "countryName": "UNITED STATES OF AMERICA",
+        "countryCode": "US",
+        "stateCode": "AZ",
+        "regionCode": "NAMER"
+      },
+      "analytics": {
+        "travelers": {
+          "score": 2
+        }
+      }
+    }
+  ]
+}
