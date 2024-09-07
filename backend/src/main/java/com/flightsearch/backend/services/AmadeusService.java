@@ -79,7 +79,7 @@ public class AmadeusService implements IAmadeusService {
 
             return dtoResponse;
         } catch (RestClientException rcEx) {
-            if (rcEx.getMessage().startsWith("500")) {
+            if (rcEx.getMessage().startsWith("50")) {
                 try {
                     ObjectMapper mapper = new ObjectMapper();
                     mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
@@ -120,7 +120,7 @@ public class AmadeusService implements IAmadeusService {
 
             return dtoResponse;
         } catch (RestClientException rcEx) {
-            if (rcEx.getMessage().startsWith("500")) {
+            if (rcEx.getMessage().startsWith("50")) {
                 try {
                     AirlinesResponse response = mapper.readValue(
                             new File("./src/main/java/com/flightsearch/backend/airlines.json").getAbsoluteFile(),
@@ -159,10 +159,12 @@ public class AmadeusService implements IAmadeusService {
             AirportsResponse responseBody = response.getBody();
 
             AirportsResponseDto dtoResponse = mapAirportsToDto(responseBody);
+            System.out.println(dtoResponse);
 
             return dtoResponse;
         } catch (RestClientException rcEx) {
-            if (rcEx.getMessage().startsWith("500")) {
+            System.out.println(rcEx);
+            if (rcEx.getMessage().startsWith("50")) {
                 try {
                     AirportsResponse response = mapper.readValue(
                             new File("./src/main/java/com/flightsearch/backend/locations.json"),
