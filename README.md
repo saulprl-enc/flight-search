@@ -22,7 +22,15 @@ npm install
 
 As a side note, this project was created using `Node.js v20.15.1`.
 
-3. Running the project.
+3. Environment variables.
+
+The front-end project needs an environment variable to connect to the back-end. You must create a file named `.env.local` with the following contents:
+
+```bash
+VITE_APP_API_URL=http://localhost:8080 # or the back-end's IP and port
+```
+
+4. Running the project.
 
 **Recommendation: prepare at least to terminals in order to execute each project separately**. Otherwise, you can run one project, send it to the background (with `Ctrl + Z`), and execute the other one.
 
