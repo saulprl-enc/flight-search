@@ -42,13 +42,6 @@ public class AmadeusController {
                 currencyCode,
                 nonStop
         );
-//        return amadeusService.getFlightOffers("HMO",
-//                "GDL",
-//                LocalDate.of(2024, Month.SEPTEMBER, 21),
-//                LocalDate.of(2024, Month.SEPTEMBER, 23),
-//                1,
-//                "MXN",
-//                true);
     }
 
     @GetMapping("airlines")
