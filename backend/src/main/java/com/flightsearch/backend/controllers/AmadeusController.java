@@ -25,7 +25,7 @@ public class AmadeusController {
     }
 
     @GetMapping("flights")
-    public FlightOffersResponseDto getFlightOffers(@RequestParam() String origin, @RequestParam() String destination, @RequestParam() LocalDate departureDate, @RequestParam() LocalDate returnDate, @RequestParam(required = false) Integer adults, @RequestParam() String currencyCode, @RequestParam(required = false) Boolean nonStop) {
+    public FlightOffersResponseDto getFlightOffers(@RequestParam() String origin, @RequestParam() String destination, @RequestParam() LocalDate departureDate, @RequestParam(required = false) LocalDate returnDate, @RequestParam(required = false) Integer adults, @RequestParam() String currencyCode, @RequestParam(required = false) Boolean nonStop) {
         if (adults == null) {
             adults = 1;
         }

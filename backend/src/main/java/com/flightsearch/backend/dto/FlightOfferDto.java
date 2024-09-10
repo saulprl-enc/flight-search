@@ -6,6 +6,8 @@ public record FlightOfferDto(String id,
                              Boolean oneWay,
                              String lastTicketingDate,
                              String lastTicketingDateTime,
-                             List<ItineraryDto> itineraries) {
+                             List<ItineraryDto> itineraries,
+                             PriceDto price,
+                             List<TravelerPricingDto> travelerPricings) {
 
 }
