@@ -17,13 +17,31 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { format } from "date-fns";
 import { Checkbox } from "../ui/checkbox";
+import { Input } from "../ui/input";
 
 const AirportSearchForm = z.object({
-  departureAirport: z.string(),
-  arrivalAirport: z.string(),
-  departureDate: z.date(),
-  returnDate: z.date().optional(),
+  departureAirport: z.string({
+    required_error: "The departure airport is required.",
+  }),
+  arrivalAirport: z.string({
+    required_error: "The arrival airport is required.",
+  }),
+  departureDate: z
+    .date({ required_error: "The departure date is required." })
+    .min(new Date(), { message: "Hey, there, time traveler." }),
+  returnDate: z
+    .date()
+    .min(new Date(), { message: "Hey, there, time traveler." })
+    .optional(),
   currency: CurrencyCode,
+  adults: z.coerce
+    .number({
+      required_error: "The number of adults is required.",
+    })
+    .gte(1, {
+      message: "The number of adults must be greater than or equal to 0.",
+    })
+    .default(1),
   nonStop: z.boolean().default(false).optional(),
 });
 
@@ -34,6 +52,9 @@ export const FlightForm = () => {
 
   const form = useForm<AirportSearchForm>({
     resolver: zodResolver(AirportSearchForm),
+    defaultValues: {
+      adults: 1,
+    },
   });
 
   const handleFormSubmit = (data: AirportSearchForm) => {
@@ -41,6 +62,7 @@ export const FlightForm = () => {
     params.set("departureAirport", data.departureAirport);
     params.set("arrivalAirport", data.arrivalAirport);
     params.set("departureDate", format(data.departureDate, "yyyy-MM-dd"));
+    params.set("adults", data.adults.toString());
     if (data.returnDate) {
       params.set("returnDate", format(data.returnDate, "yyyy-MM-dd"));
     }
@@ -50,6 +72,8 @@ export const FlightForm = () => {
 
     navigate(`/flights?${params.toString()}`);
   };
+
+  const minDate = new Date();
 
   return (
     <div className="p-2 border-2 border-border">
@@ -105,7 +129,11 @@ export const FlightForm = () => {
                   Departure Date
                 </FormLabel>
                 <FormControl>
-                  <DatePicker value={field.value} onChange={field.onChange} />
+                  <DatePicker
+                    value={field.value}
+                    onChange={field.onChange}
+                    minDate={minDate}
+                  />
                 </FormControl>
                 <div></div>
                 <FormMessage />
@@ -119,7 +147,30 @@ export const FlightForm = () => {
               <FormItem className="grid grid-cols-2">
                 <FormLabel className="justify-self-end">Return Date</FormLabel>
                 <FormControl>
-                  <DatePicker value={field.value} onChange={field.onChange} />
+                  <DatePicker
+                    value={field.value}
+                    onChange={field.onChange}
+                    minDate={form.watch("departureDate") ?? minDate}
+                  />
+                </FormControl>
+                <div></div>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="adults"
+            render={({ field }) => (
+              <FormItem className="grid grid-cols-2">
+                <FormLabel className="justify-self-end">Adults</FormLabel>
+                <FormControl>
+                  <Input
+                    type="number"
+                    value={field.value}
+                    onChange={field.onChange}
+                    min={1}
+                  />
                 </FormControl>
                 <div></div>
                 <FormMessage />

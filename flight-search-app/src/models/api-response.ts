@@ -58,6 +58,8 @@ export interface FlightOffer {
   lastTicketingDate: string;
   lastTicketingDateTime: string;
   itineraries: Array<Itinerary>;
+  price: Price;
+  travelerPricings: Array<TravelerPricing>;
 }
 
 export interface Itinerary {
@@ -86,4 +88,31 @@ export interface FlightStop {
   duration: string;
   arrivalAt: string;
   departureAt: string;
+}
+
+export interface Price {
+  grandTotal: string;
+  billingCurrency: string;
+  currency: string;
+  total: string;
+  base: string;
+  fees: Array<Fee>;
+  taxes: Array<Tax>;
+}
+
+export interface Fee {
+  amount: string;
+  type: string;
+}
+
+export interface Tax {
+  amount: string;
+  code: string;
+}
+
+export interface TravelerPricing {
+  travelerId: string;
+  price: Price;
+  fareOption: string;
+  travelerType: string;
 }

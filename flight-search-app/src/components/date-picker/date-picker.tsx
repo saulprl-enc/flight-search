@@ -10,9 +10,16 @@ import { SelectSingleEventHandler } from "react-day-picker";
 interface Props {
   value?: Date;
   onChange: (value?: Date) => void;
+  minDate?: Date;
+  maxDate?: Date;
 }
 
-export const DatePicker: FC<Props> = ({ value, onChange }) => {
+export const DatePicker: FC<Props> = ({
+  value,
+  onChange,
+  minDate,
+  maxDate,
+}) => {
   return (
     <Popover>
       <PopoverTrigger asChild>
@@ -33,6 +40,8 @@ export const DatePicker: FC<Props> = ({ value, onChange }) => {
           selected={value}
           onSelect={onChange}
           initialFocus
+          fromDate={minDate}
+          toDate={maxDate}
         />
         <div className="p-2">
           <Button
